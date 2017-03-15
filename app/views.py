@@ -53,7 +53,7 @@ def login():
             flash('Login information incorrect', 'danger')
     return render_template("login.html", form=form)
 
-@app.route('/secure-page/')
+@app.route('/secure-page')
 @login_required
 def secure_page():
     return render_template("secure_page.html")
@@ -63,6 +63,11 @@ def secure_page():
 @login_manager.user_loader
 def load_user(id):
     return UserProfile.query.get(int(id))
+    
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
 
 ###
 # The functions below should be applicable to all Flask apps.
