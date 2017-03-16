@@ -1,0 +1,70 @@
+
+{% extends "base.html" %}
+{% block css %}
+        <link rel="stylesheet" type="text/css" href="/static/css/userform.css">
+{% endblock %}
+{% block main %}
+        <h1>New User Form</h1>
+        
+        {% block main %}
+        <form method="POST" action="{{ url_for('profile')}}" method="post" enctype="multipart/form-data">
+            <p class="medium"><b>First Name <span>(Required)</span></b></p>
+            <p class="small">Please enter your first name</p>
+            <input type="text" name="fName" class="input"><br><br>
+            
+            <p class="medium"><b>Last Name <span>(Required)</span></b></p>
+            <p class="small">Please enter your last name</p>
+            <input type="text" name="lName" class="input"><br><br>
+            
+            <p class="medium"><b>User Name <span>(Required)</span></b></p>
+            <p class="small">Please enter your Username</p>
+            <input type="text" name="userName" class="input"><br><br>
+            
+            <p class="medium"><b>Age <span>(Required)</span></b></p>
+            <p class="small">Please enter your age</p>
+            <input type="number" name="age" class="input"><br><br>
+            
+            <p class="medium"><b>Bio <span>(Required)</span></b></p>
+            <p class="small">Please enter a short bio about yourself</p>
+            <input type="text" name="bio" class="box input"><br><br>
+            
+            <p class="form-group medium"><b>Upload file<span>(Required)</span></b></p>
+            <p class= "small">Upload a picture of yourself :))</p> <!- <label for="file">Upload your file</label> ->
+            <input type="file" name="file" class="form-control" />
+            
+            <p class="medium"><b>Gender <span>(Required)</span></b></p>
+            <p class="small">Please select your Gender</p>
+            <input type= "radio" name="gender" value="Male">M <br>
+            <input type= "radio" name="gender" value="Female">F <br>
+            
+          <button type="submit" name="submit" class="btn btn-primary">Create User</button>
+        </form>
+        
+{% endblock %} 
+
+<!--
+{% extends "base.html" %}
+
+{% block main %}
+<h1 class="page-header">Create a New Profile</h1>
+<form method = "GET" action = "{{ url_for('profile') }}">
+    <label for = "firstname">First Name:</label>
+    <input type = "text" class = "form-control" placeholder = "First Name" id = "firstname">
+    
+    <label for = "lastname">Last Name:</label>
+    <input type = "text" class = "form-control" placeholder = "Last Name" id = "lastname">
+    
+    <label for = "Age">Age:</label>
+    <input type = "number" class = "form-control" placeholder = "21" id = "age">
+    
+    <label for = "biography">Biography:</label>
+    <textarea rows = "4" cols = "50" class = "form-control" placeholder = "Tell us about yourself" id = "biography"></textarea>
+    
+    <input type = "file">
+    
+    <input type = "submit" id = "SubBtn" class = "btn btn-primary">
+</form>
+
+{% endblock %}
+
+-->

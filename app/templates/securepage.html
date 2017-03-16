@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1 class="page-header">File Listing</h1>
+{% include 'flash_messages.html' %}
+<p> All Files - {{ uploads }}</p>
+<ul>
+{% for files in uploads %}
+{% if not (files.lower().endswith(('.png', '.jpg', '.jpeg'))) %}
+    <li>{{ files }}</li>
+{% endif %}
+{% endfor %}
+</ul>
+
+<h1 class="page-header">Uploaded Images Gallery</h1>
+{% for files in uploads %}
+{% if (files.lower().endswith(('.png', '.jpg', '.jpeg'))) %}
+    <div class="col-md-4">
+      <div class="thumbnail" >
+        <img src="{{ url_for('static', filename='uploads/') }}{{ files }}" alt="{{ files }}"
+             style="height: 200px; width: 100%;">
+          <div class="caption">
+            <p>{{ files }}</p>
+          </div>      
+      </div>
+    </div>    
+{% endif %}
+{% endfor %}
+    
+
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel= "stylesheet" href='/static/css/profile.css'>
+{% endblock %}
+{% block main %}
+<h1>Profile</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="alert alert-success">
+        <ul class="flashes">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        </div>
+    {% endif %}
+    {% endwith %}
+    
+<body>
+    <div id="inside">
+        <div id="onleft">
+            <div id="picture">
+                <img src= "{{ url_for('static', filename='uploads/') }}{{ profile.image }}" alt="{{ profile.image }}" id="ProfilePic"> 
+            </div>
+        </div>
+        <div id="onright">
+            <div id="info">
+                <div id="name">
+                    {{ profile.firstname }} {{ profile.lastname }}
+                </div>
+                <div id="date">
+                    <p><b></b>Today's date is:</b> {{ thedate }}</p>
+                </div>
+                <div id="Name">
+                    <p><b>Username:</b> {{ profile.username }}</p>
+                    <p><b>ID Number:</b> {{ profile.id }}</p>
+                    <p><b>Age:</b> {{ profile.age }} </p>
+                    <p><b>Gender:</b> {{ profile.gender }}</p>
+                </div>
+                <div>
+                    <p></p>
+                    <p></p>
+                </div>
+                <div>
+                    <p></p>
+                    <p></p>
+                </div>
+                <div id="long">
+                    {{ profile.bio }}
+                </div>
+            </div>    
+        </div>
+    </div>
+</body>
+{% endblock %}
